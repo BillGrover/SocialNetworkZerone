@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="robots" content="noindex,nofollow"/>
+
+    <title th:text="${'Лог файлы за ' + date}"> </title>
+</head>
+<body>
+    <div>
+        <h1 th:text="${'Лог файлы за ' + date}"></h1>
+    </div>
+    <div>
+        <ul>
+            <th:block  th:each="logFile : ${logList}">
+                <li>
+                    <a th:href="${logFile}" th:text="${logFile}">  </a>
+                </li>
+            </th:block >
+        </ul>
+    </div>
+</body>
+</html>

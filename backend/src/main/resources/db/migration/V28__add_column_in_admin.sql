@@ -1,0 +1,1 @@
+ALTER TABLE admins ADD COLUMN img_url VARCHAR(255) AFTER status;

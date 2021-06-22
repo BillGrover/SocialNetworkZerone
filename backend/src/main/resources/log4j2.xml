@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %-50c{1.} - %msg %n" />
+        </Console>
+        <RollingFile name="Start" fileName="logs/Start.log"
+                     filePattern="logs/$${date:yyyy-MM}/Start/Start-%d{MM-dd-yyyy}-%i.log.gz" append="false">
+            <PatternLayout>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %-50c{1.} - %msg %n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval = "1" />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+        </RollingFile>
+        <RollingFile name="Response" fileName="logs/Response.log"
+                     filePattern="logs/$${date:yyyy-MM}/Response/Response-%d{MM-dd-yyyy}-%i.log.gz">
+            <MarkerFilter marker="RESPONSE" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval = "1" />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+        </RollingFile>
+        <RollingFile name="Dialog" fileName="logs/Dialog.log"
+                     filePattern="logs/$${date:yyyy-MM}/Dialog/Dialog-%d{MM-dd-yyyy}-%i.log.gz">
+            <MarkerFilter marker="DIALOG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval = "1" />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="Request" fileName="logs/Request.log"
+                     filePattern="logs/$${date:yyyy-MM}/Request/Request-%d{MM-dd-yyyy}-%i.log.gz">
+            <MarkerFilter marker="REQUEST" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval = "1" />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="Time" fileName="logs/ExecutionTime.log"
+                     filePattern="logs/$${date:yyyy-MM}/ExecutionTime/ExecutionTime-%d{MM-dd-yyyy}-%i.log.gz">
+            <MarkerFilter marker="TIME" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <TimeBasedTriggeringPolicy />
+        </RollingFile>
+
+        <RollingFile name="Error" fileName="logs/Error.log"
+                     filePattern="logs/$${date:yyyy-MM}/Error/Error-%d{MM-dd-yyyy}-%i.log.gz">
+            <MarkerFilter marker="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout>
+                <pattern>%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval = "1" />
+                <SizeBasedTriggeringPolicy size="100 MB" />
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Start"/>
+            <AppenderRef ref="Request" level="info"/>
+            <AppenderRef ref="Response" level="info"/>
+            <AppenderRef ref="Time" level="info"/>
+            <AppenderRef ref="Dialog" level="info"/>
+            <AppenderRef ref="Error" level="error"/>
+        </Root>
+    </Loggers>
+</Configuration>

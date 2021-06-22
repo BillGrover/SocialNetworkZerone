@@ -1,0 +1,1 @@
+update posts set posts.time = date_add("2021-02-21", interval -(41 - posts.id) week) where posts.id > 0;

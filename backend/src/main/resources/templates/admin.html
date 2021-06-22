@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>ZERONE Admin</title>
+    <link href="/admin/admin.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="login">
+    <div class="wrapper">
+        <form action="" class="login-form">
+            <h2 class="title login__title">Вход в админ-панель</h2>
+            <input class="login-input login-email" autocomplete="current-email" name="email" placeholder="Email"
+                   required
+                   type="email">
+            <input class="login-input login-password" autocomplete="current-password" name="password"
+                   placeholder="Пароль" required
+                   type="password">
+            <button class="white-button login__submit" type="submit">Войти</button>
+            <a class="login__forgot-link" href="/forgot">Забыли пароль?</a>
+        </form>
+    </div>
+</div>
+
+<div class="admin-box">
+    <div class="admin-title">
+        <img alt="Аватар пользователя" class="admin-title__img">
+        <span class="admin-title__name"></span>
+        &nbsp;—&nbsp;
+        <span class="admin-title__position"></span>
+    </div>
+    <div class="admin-menu">
+        <img alt="Логотип панели" class="admin-menu__logo" src="/admin/images/admin-panel-logo.svg">
+        <ul class="admin-menu__list">
+            <li class="admin-menu__list-item statistics admin-menu__list-item--active" page="statistics">Статистика</li>
+            <li class="admin-menu__list-item persons" page="persons">Люди</li>
+            <li class="admin-menu__list-item supports" page="supports">Обращения</li>
+            <li class="admin-menu__list-item settings adminOnly" page="settings">Администраторы и модераторы</li>
+            <li class="admin-menu__list-item exit">Выход</li>
+        </ul>
+    </div>
+
+    <div class="admin-page statistics__page admin-page--active">
+        <div class="admin-page__title title">Общая</div>
+        <div class="admin-page__box">
+            <div class="admin-page__content ">
+                <div class="statistic-card statistic-card--persons">
+                    <p class="statistic-card__title">Пользователей зарегистрировано</p>
+                    <p class="statistic-card__count persons-counter"></p>
+                </div>
+                <div class="statistic-card statistic-card--posts">
+                    <p class="statistic-card__title">Публикаций создано</p>
+                    <p class="statistic-card__count posts-counter"></p>
+                </div>
+                <div class="statistic-card statistic-card--comments">
+                    <p class="statistic-card__title">Комментариев оставлено</p>
+                    <p class="statistic-card__count comments-counter"></p>
+                </div>
+                <div class="statistic-card statistic-card--likes">
+                    <p class="statistic-card__title">Лайков поставлено</p>
+                    <p class="statistic-card__count likes-counter"></p>
+                </div>
+            </div>
+            <ul class="admin-aside statistics__filter">
+                <li class="admin-aside__item admin-aside__item--active">Общая</li>
+                <li class="admin-aside__item">Публикации</li>
+                <li class="admin-aside__item">Пользователи</li>
+                <li class="admin-aside__item">Комментарии</li>
+                <li class="admin-aside__item">Лайки</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="admin-page persons__page">
+        <div class="admin-page__title title">Люди (<span class="admin-page__counter"></span>)</div>
+        <div class="admin-page__box">
+            <div class="admin-page__content-wrapper">
+                <input class="admin-page__input" placeholder="Поиск...">
+                <div class="admin-page__alert error">Не найдено</div>
+                <div class="admin-page__content"></div>
+            </div>
+            <ul class="admin-aside">
+                <li class="admin-aside__item admin-aside__item--active" gx-filter="all">Все</li>
+                <li class="admin-aside__item adminOnly" gx-filter="rejected">Неподтвержденные</li>
+                <li class="admin-aside__item" gx-filter="active">Активные</li>
+                <li class="admin-aside__item" gx-filter="blocked">Ограничен доступ</li>
+                <li class="admin-aside__item" gx-filter="total_blocked">Полная блокировка</li>
+                <li class="admin-aside__item adminOnly" gx-filter="deleted">Удаленные</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="admin-page supports__page">
+        <div class="admin-page__title title">Обращения в ТП (<span class="admin-page__counter"></span>)</div>
+        <div class="admin-page__box">
+            <div class="admin-page__content-wrapper">
+                <div class="admin-page__alert error">Не найдено</div>
+                <div class="admin-page__content">
+                </div>
+            </div>
+            <ul class="admin-aside">
+                <li class="admin-aside__item admin-aside__item--active" gx-filter="all">Все</li>
+                <li class="admin-aside__item" gx-filter="new">Новые</li>
+                <li class="admin-aside__item" gx-filter="open">В работе</li>
+                <li class="admin-aside__item" gx-filter="closed">Закрытые</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="admin-page settings__page adminOnly">
+        <div class="admin-page__title title">Администраторы и модераторы (<span class="admin-page__counter"></span>)
+            <a href="#" class="admin-page__add-link">Добавить</a>
+        </div>
+        <div class="admin-page__box">
+            <div class="admin-page__content-wrapper">
+                <input class="admin-page__input" placeholder="Поиск...">
+                <div class="admin-page__alert error">Не найдено</div>
+                <div class="admin-page__content">
+                </div>
+            </div>
+            <ul class="admin-aside">
+                <li class="admin-aside__item admin-aside__item--active" gx-filter="all">Все</li>
+                <li class="admin-aside__item" gx-filter="moderator">Модераторы</li>
+                <li class="admin-aside__item" gx-filter="admin">Администраторы</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="admin-page add-page"></div>
+
+</div>
+
+</body>
+
+<script src="/admin/admin.js"></script>
+
+</html>

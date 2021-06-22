@@ -1,0 +1,1 @@
+update persons set last_online_time = registration_date where approval = 'APPROVED';

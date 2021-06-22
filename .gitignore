@@ -1,0 +1,57 @@
+.DS_Store
+.idea/
+.idea/*
+.vscode
+*.sublime*
+npm-degug.*
+
+# Игнорирование по типу
+*.zip
+*.rar
+*.log
+*.pdf
+*.xls*
+*.txt
+*.iml
+
+# папка выхода
+dist/
+
+# папка макетов
+maket/
+
+# папка плагинов
+node_modules/
+
+# локальные настройки
+package-lock.json
+
+# IDEA Project
+out/
+res/
+source/
+target/
+*.class
+
+
+# User-specific stuff
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/**/usage.statistics.xml
+**/.idea/**/dictionaries
+**/.idea/**/shelf
+
+# Generated files
+**/.idea/**/contentModel.xml
+
+hs_err_pid*
+
+/socialNetwork.iml
+
+src/main/resources/application.properties
+#*-local.yaml
+*-local.yml
+/uploads/
+/logs/
+
+/backend/src/main/resources/application.properties

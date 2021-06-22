@@ -1,0 +1,5 @@
+spring.datasource.url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/team_diplom?serverTimezone=UTC
+spring.datasource.username: root
+spring.datasource.password: 27526976
+
+upload.path: /F:/Java/SkillBox/01_TeamDiplom/javapro-socialnetwork-studygroup-10/uploads
